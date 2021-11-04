@@ -19,7 +19,7 @@ public class Bullet : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
-        _playerPos = GameObject.Find("VRCamera").transform.position;
+        _playerPos = GameObject.Find("Main Camera").transform.position;
 
         Quaternion rotationAngle = Quaternion.LookRotation(_playerPos - transform.position);
         transform.rotation = rotationAngle;

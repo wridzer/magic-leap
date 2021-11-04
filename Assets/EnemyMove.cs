@@ -63,4 +63,19 @@ public class EnemyMove : MonoBehaviour
         Quaternion bulletRot = Quaternion.Euler(shootPoint.transform.eulerAngles + new Vector3(90, 0, 0));
         Instantiate(BulletInstance, shootPoint.transform.position, bulletRot);
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.tag == "lightsaber")
+        {
+            GetComponent<MeshRenderer>().enabled = false;
+            StartCoroutine(timer());
+        }
+    }
+
+    private IEnumerator timer()
+    {
+        yield return new WaitForSeconds(3);
+        GetComponent<MeshRenderer>().enabled = true;
+    }
 }
